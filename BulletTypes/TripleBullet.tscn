@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/triple_bullet.gd" type="Script" id=2]
+
+[sub_resource type="SegmentShape2D" id=8]
+a = Vector2( -1, 0 )
+b = Vector2( 2, 0 )
+
+[node name="BulletNode" type="Area2D"]
+position = Vector2( 100, 70 )
+collision_layer = 8
+collision_mask = 8
+monitoring = false
+monitorable = false
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 8 )

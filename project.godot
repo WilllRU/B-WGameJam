@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Scripts/bullet.gd"
+}, {
+"base": "Area2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/enemy.gd"
+}, {
 "base": "RigidBody2D",
 "class": "ShipMovement",
 "language": "GDScript",
-"path": "res://Scripts/ShipMovement.gd"
+"path": "res://Scripts/ship_movement.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
+"Enemy": "",
 "ShipMovement": ""
 }
 

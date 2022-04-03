@@ -5,7 +5,7 @@ extends RigidBody2D
 var accel: int = 5
 var max_speed : int = 90
 var dir : Vector2 = Vector2(0,0)
-var damping : float = 1
+var damping : float = 1.5
 var firing : bool = false
 var fired : bool = false
 var bomb : bool = false
@@ -13,8 +13,8 @@ var is_dying : bool = false
 var dead : bool = false
 
 # BulletTypes
-var bullet = [preload("res://BulletTypes/NormalBullet.tscn")]
-var cur_bullet : int = 0
+var bullet = [preload("res://BulletTypes/NormalBullet.tscn"), preload("res://BulletTypes/TripleBullet.tscn")]
+var cur_bullet : int = 1
 
 # Recording for the Ghost
 var count : int = 0
