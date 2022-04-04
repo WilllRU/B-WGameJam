@@ -1,17 +1,17 @@
 extends "bullet.gd"
 
 var bullet_type: int = 3
-var dir : int = 3
-var spread = dir * 10
+var proj : int = 3
+var spread = proj * 10
 
 func _init():
 	fire_rate = 0.3
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
-	var ab : float = spread/(dir -1)
+	var ab : float = spread/(proj -1)
 	var angle : float = -ab
-	for n in dir:
+	for n in proj:
 		var bullet = preload("res://BulletTypes/SpreadBullet.tscn")
 		var l_b = bullet.instance()
 		var a : float = float(angle/(spread*2))

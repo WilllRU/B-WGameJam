@@ -20,14 +20,14 @@ _global_script_classes=[ {
 "path": "res://Scripts/enemy.gd"
 }, {
 "base": "RigidBody2D",
-"class": "ShipMovement",
+"class": "Ship",
 "language": "GDScript",
-"path": "res://Scripts/ship_movement.gd"
+"path": "res://Scripts/ship.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
-"ShipMovement": ""
+"Ship": ""
 }
 
 [application]
@@ -36,6 +36,10 @@ config/name="B-WGameJam"
 run/main_scene="res://Game.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 
