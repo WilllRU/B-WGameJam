@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Scripts/bullet.gd"
+"path": "res://Scripts/Bullets/bullet.gd"
 }, {
 "base": "Area2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Scripts/enemy.gd"
+"path": "res://Scripts/Enemies/enemy.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Ship",
 "language": "GDScript",
-"path": "res://Scripts/ship.gd"
+"path": "res://Scripts/Ships/ship.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",

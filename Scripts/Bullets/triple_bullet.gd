@@ -1,11 +1,11 @@
-extends "bullet.gd"
+extends Bullet
 
 var bullet_type: int = 3
 var proj : int = 3
 var spread = proj * 10
 
 func _init():
-	fire_rate = 0.1
+	fire_rate = 0.4
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,6 +1,4 @@
-extends "bullet.gd"
-
-var vec_dir : Vector2 = Vector2(0,0)
+extends Bullet
 
 func _init():
 	dmg = 1
@@ -8,10 +6,7 @@ func _init():
 	pass
 	
 func bullet_movement() -> void:
-	life += 1
 	position += vec_dir.normalized() * speed
-	if life > life_time:
-		create_explosion()
 
 func _on_bullet_body_entered(_body) -> void:
 	var enemy := _body as Enemy

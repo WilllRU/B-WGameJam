@@ -1,6 +1,7 @@
 extends Ship
 
 signal RestartScene
+signal ShipPosition (pos)
 
 # Recording for the Ghost
 var old : Array 
@@ -38,7 +39,7 @@ func record_ghost() -> void:
 		return
 
 func movement_manager() -> void:
-	p_dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down",-2)
+	p_dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down",-1)
 	if Input.is_action_pressed("game_fire") and not firing:
 		fired = true
 		pass
@@ -74,7 +75,10 @@ func _physics_process(_delta):
 	if dead and not is_dying:
 		is_dying = true
 		has_died()
-		
+
+func _process(delta):
+	emit_signal("ShipPosition", global_position)
+
 func has_died() -> void:
 	
 	var f := File.new()
