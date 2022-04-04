@@ -34,11 +34,13 @@ _global_script_class_icons={
 
 config/name="B-WGameJam"
 run/main_scene="res://Game.tscn"
+boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [debug]
 
+settings/profiler/max_functions=1000
 settings/stdout/print_fps=true
 
 [display]
@@ -117,9 +119,41 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+quality/directional_shadow/size=256
+quality/directional_shadow/size.mobile=256
+quality/shadow_atlas/size=256
+quality/shadow_atlas/size.mobile=256
+quality/shadow_atlas/cubemap_size=64
+quality/shadow_atlas/quadrant_0_subdiv=0
+quality/shadow_atlas/quadrant_1_subdiv=0
+quality/shadow_atlas/quadrant_2_subdiv=0
+quality/shadow_atlas/quadrant_3_subdiv=0
+quality/shadows/filter_mode=0
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/reflections/irradiance_max_size=32
+quality/shading/force_vertex_shading=true
+quality/shading/force_lambert_over_burley=true
+quality/shading/force_blinn_over_ggx=true
+2d/options/ninepatch_mode=0
+batching/parameters/max_join_item_commands=8
+batching/lights/max_join_items=4
 gles2/compatibility/disable_half_float=true
 batching/precision/uv_contract=true
+batching/precision/uv_contract_amount=10
+quality/lightmapping/use_bicubic_sampling=false
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+cpu_lightmapper/quality/low_quality_ray_count=16
+cpu_lightmapper/quality/medium_quality_ray_count=128
+cpu_lightmapper/quality/high_quality_ray_count=256
+cpu_lightmapper/quality/ultra_quality_ray_count=512
+quality/reflections/atlas_size=0
+quality/reflections/atlas_subdiv=0
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

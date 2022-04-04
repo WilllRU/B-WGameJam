@@ -3,7 +3,7 @@ extends Enemy
 
 func _init():
 	health = 6
-	accel = 1
+	accel = .5
 	max_speed = 50
 	# There is no "0" Key because we want this too loop
 	# It won't break because the "cur" Array is filled with
@@ -16,7 +16,7 @@ func _init():
 	}
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	enemy_load()
 	enemy_action()
 	pass
@@ -31,7 +31,7 @@ func enemy_load() -> void:
 		count = 0
 		size = 0
 		pass
-	print(count)
+	#print(count)
 
 func enemy_action() -> void:
 	var vec2 : Vector2 = cur[0]

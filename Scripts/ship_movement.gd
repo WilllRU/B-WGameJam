@@ -1,5 +1,6 @@
 extends Ship
 
+signal RestartScene
 
 # Recording for the Ghost
 var old : Array 
@@ -18,7 +19,7 @@ func _ready():
 func setup_ghost() -> void:
 	var file_check = File.new()
 	for n in max_ghost:
-		if file_check.file_exists("res://Ghost/" + "ghost_" + String(n) + ".json"):
+		if file_check.file_exists("user://" + "ghost_" + String(n) + ".json"):
 			var ghost = preload("res://Prefabs/Ships/GhostShip.tscn")
 			var load_ghost = ghost.instance()
 			load_ghost.global_position = global_position
@@ -75,9 +76,12 @@ func _physics_process(_delta):
 		has_died()
 		
 func has_died() -> void:
-	create_explosion()
+	
 	var f := File.new()
-	f.open("res://Ghost/" + "ghost_0.json", File.WRITE)
+	f.open("user://" + "ghost_0.json", File.WRITE)
 	prints("Saving to", f.get_path_absolute())
 	f.store_string(JSON.print(ghost_play))
 	f.close()
+	
+	emit_signal("RestartScene")
+	create_explosion()

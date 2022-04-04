@@ -14,7 +14,7 @@ func _ready():
 
 func load_file():
 	var f := File.new()
-	f.open("res://Ghost/" + "ghost_0.json", File.READ)
+	f.open("user://" + "ghost_0.json", File.READ)
 	var result := JSON.parse(f.get_as_text())
 	f.close()
 	return result.result as Dictionary
@@ -49,7 +49,7 @@ func play_recording():
 	var vec2 : Vector2 = str2var("Vector2" + cur[0])
 	movement_manager(vec2)
 	if cur[1]:
-		print("SHOOTING!")
+		#print("SHOOTING!")
 		can_shoot()
 	if cur[3]:
 		dead = true

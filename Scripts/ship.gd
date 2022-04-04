@@ -1,6 +1,7 @@
 class_name Ship
 extends RigidBody2D
 
+
 # Ship Vars
 var accel: int = 0
 var cur_speed := Vector2(0,0)
@@ -31,7 +32,7 @@ var ghost_play : Dictionary = {"0": [0, Vector2(0,0), false, false, false]}
 func can_shoot() -> void:
 	if firing:
 		return
-	print("FIRE!")
+	#print("FIRE!")
 	firing = true
 	var l_b = bullet[cur_bullet].instance()
 	l_b.global_position = global_position + Vector2(15,0)

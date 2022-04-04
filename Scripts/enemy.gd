@@ -2,7 +2,7 @@ class_name Enemy
 extends Area2D
 
 var health : int
-var accel : int
+var accel : float
 var max_speed : int
 # Starting frame loop, Key is the starting frame, 
 var move_path : Dictionary = {"0": [Vector2(-1,0),false]}
@@ -22,8 +22,8 @@ func movement(move : Vector2) -> void:
 	position += move
 
 func explode() -> void:
-	monitoring = false
-	monitorable = false
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	for n in 2:
 		var explosion = preload("res://Prefabs/Explosion.tscn")
 		var e = explosion.instance()
