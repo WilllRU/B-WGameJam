@@ -14,7 +14,10 @@ func _ready():
 
 func load_file():
 	var f := File.new()
-	f.open("user://" + "ghost_0.json", File.READ)
+	var check = f.open("user://" + "ghost_0.json", File.READ)
+	if check != OK:
+		printerr("The file is unsalvagable...WHAT DID YOU DO!!!!")
+		pass
 	var result := JSON.parse(f.get_as_text())
 	f.close()
 	return result.result as Dictionary

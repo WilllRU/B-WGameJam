@@ -47,6 +47,8 @@ settings/stdout/print_fps=true
 
 window/size/width=256
 window/size/height=144
+window/size/test_width=512
+window/size/test_height=288
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 

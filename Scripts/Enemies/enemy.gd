@@ -3,7 +3,6 @@ extends Area2D
 
 var health : int
 var accel : float = 10
-var life_time : float = 11.0
 ## Starting frame loop, Key is the starting frame, 
 var move_path : Dictionary = { 0 : [Vector2(-1,0),0.0,false]}
 var count : int = 0
@@ -19,7 +18,7 @@ func take_damage(hp : int) -> void:
 		explode()
 	pass
 
-func movement(move : Vector2, d: float) -> void:
+func movement(move : Vector2, _d: float) -> void:
 #	var new_pos = (move * accel) + position 
 #	position = position.linear_interpolate(new_pos, d * accel)
 	move *= accel/10

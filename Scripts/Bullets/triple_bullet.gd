@@ -19,7 +19,8 @@ func _ready():
 		l_b.global_position = self.global_position + dir
 		l_b.vec_dir = dir
 		get_parent().call_deferred("add_child",l_b)
-		#yield(get_tree().create_timer(.1, false),"timeout")
+		
 		angle += ab
+	yield(get_tree().create_timer(.3, false),"timeout")
 	queue_free()
 	pass # Replace with function body.

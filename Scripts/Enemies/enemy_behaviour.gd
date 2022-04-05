@@ -17,7 +17,7 @@ func _ready() -> void:
 func set_move() -> void:
 	cur = move_path.get(count)
 	$Timer.start(cur[1]); yield($Timer, "timeout")
-	print(count)
+	#print(count)
 	count += 1
 	if count >= move_path.size():
 		count = 0
@@ -26,9 +26,6 @@ func set_move() -> void:
 
 func _physics_process(_delta):
 	movement(cur[0], _delta)
-	life_time -= _delta
-	if life_time < 0:
-		queue_free()
 	pass
 
 func _on_Enemy_body_entered(body):

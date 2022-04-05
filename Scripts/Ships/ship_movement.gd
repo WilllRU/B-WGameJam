@@ -76,13 +76,15 @@ func _physics_process(_delta):
 		is_dying = true
 		has_died()
 
-func _process(delta):
+func _process(_delta):
 	emit_signal("ShipPosition", global_position)
 
 func has_died() -> void:
 	
 	var f := File.new()
-	f.open("user://" + "ghost_0.json", File.WRITE)
+	var check = f.open("user://" + "ghost_0.json", File.WRITE)
+	if check != OK:
+		printerr("FAILED TO SAVE GHOST")
 	prints("Saving to", f.get_path_absolute())
 	f.store_string(JSON.print(ghost_play))
 	f.close()

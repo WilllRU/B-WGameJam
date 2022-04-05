@@ -17,7 +17,7 @@ var dead : bool = false
 onready var explosion = preload("res://Prefabs/Explosion.tscn")
 # BulletTypes
 onready var bullet = [preload("res://BulletTypes/NormalBullet.tscn"), preload("res://BulletTypes/TripleBullet.tscn")]
-var cur_bullet : int = 0
+var cur_bullet : int = 1
 
 var cur_ghost : int = 0
 const max_ghost : int = 3
