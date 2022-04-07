@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Asteroid",
+"language": "GDScript",
+"path": "res://asteroid.gd"
+}, {
+"base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
 "path": "res://Scripts/Bullets/bullet.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Ships/ship.gd"
 } ]
 _global_script_class_icons={
+"Asteroid": "",
 "Bullet": "",
 "Enemy": "",
 "Ship": ""
@@ -37,6 +43,10 @@ run/main_scene="res://Game.tscn"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
+
+[autoload]
+
+Master="*res://master_script.gd"
 
 [debug]
 

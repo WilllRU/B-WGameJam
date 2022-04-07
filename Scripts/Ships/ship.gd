@@ -14,9 +14,6 @@ var bomb : bool = false
 var is_dying : bool = false
 var dead : bool = false
 
-onready var explosion = preload("res://Prefabs/Explosion.tscn")
-# BulletTypes
-onready var bullet = [preload("res://BulletTypes/NormalBullet.tscn"), preload("res://BulletTypes/TripleBullet.tscn")]
 var cur_bullet : int = 1
 
 var cur_ghost : int = 0
@@ -34,7 +31,7 @@ func can_shoot() -> void:
 		return
 	#print("FIRE!")
 	firing = true
-	var l_b = bullet[cur_bullet].instance()
+	var l_b = Master.bullet[cur_bullet].instance()
 	l_b.global_position = global_position + Vector2(15,0)
 	get_parent().call_deferred("add_child",l_b)
 	$Timer.start(l_b.fire_rate); yield($Timer, "timeout")
@@ -54,7 +51,7 @@ func true_speed() -> Vector2:
 	
 func create_explosion() -> void:
 	for n in 4:
-		var e = explosion.instance()
+		var e = Master.explosion.instance()
 		e.global_position = global_position
 		e.scale += Vector2(n, n)
 		get_parent().call_deferred("add_child",e)

@@ -6,7 +6,6 @@ var speed : float = 0
 var dmg : int = 0
 var vec_dir := Vector2(1,0)
 
-const explosion = preload("res://Prefabs/Explosion.tscn")
 enum type_bullet {SINGLE = 1, CHARGE = 2, SPREAD = 3}
 
 func _physics_process(_delta):
@@ -17,7 +16,7 @@ func bullet_movement() -> void:
 
 
 func create_explosion() -> void:
-	var e = explosion.instance()
+	var e = Master.explosion.instance()
 	e.global_position = self.global_position
 	get_parent().call_deferred("add_child",e)
 	queue_free()

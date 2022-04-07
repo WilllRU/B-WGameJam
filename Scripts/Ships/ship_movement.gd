@@ -21,8 +21,7 @@ func setup_ghost() -> void:
 	var file_check = File.new()
 	for n in max_ghost:
 		if file_check.file_exists("user://" + "ghost_" + String(n) + ".json"):
-			var ghost = preload("res://Prefabs/Ships/GhostShip.tscn")
-			var load_ghost = ghost.instance()
+			var load_ghost = Master.ghost.instance()
 			load_ghost.global_position = global_position
 			get_parent().call_deferred("add_child",load_ghost)
 	pass
@@ -88,6 +87,5 @@ func has_died() -> void:
 	prints("Saving to", f.get_path_absolute())
 	f.store_string(JSON.print(ghost_play))
 	f.close()
-	
 	emit_signal("RestartScene")
 	create_explosion()

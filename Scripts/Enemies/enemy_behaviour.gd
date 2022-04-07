@@ -1,4 +1,4 @@
-extends "enemy.gd"
+extends Enemy
 
 func _init():
 	health = 6
