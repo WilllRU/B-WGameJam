@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Prefabs/Ships/PlayerShip.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Prefabs/Enemies/Dummy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/scene_manager.gd" type="Script" id=3]
 [ext_resource path="res://Kurkkumopo.png" type="Texture" id=4]
-[ext_resource path="res://Prefabs/Enemies/Asteroid.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/delete_enemy.gd" type="Script" id=6]
-[ext_resource path="res://timeline_manager.gd" type="Script" id=7]
 [ext_resource path="res://master_script.gd" type="Script" id=8]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=9]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends ParallaxBackground
@@ -16,7 +14,12 @@ export var scroll_speed : float = 5
 var ship_pos := Vector2(0,0)
 var count : int = 0
 
-
+func _ready():
+	var t = get_parent().get_node(\"LevelTimer\")
+	t.start(3.0); yield(t, \"timeout\")
+	var s = get_parent().get_node(\"PlayerShip\")
+	s.connect(\"ShipPosition\",self,\"_on_ShipPosition\")
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	count += 1
@@ -34,7 +37,7 @@ colors = PoolColorArray( 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
-width = 5
+width = 3
 
 [sub_resource type="SegmentShape2D" id=4]
 a = Vector2( -32, -32 )
@@ -53,39 +56,79 @@ script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="RichTextLabel" parent="CanvasLayer/Control"]
+visible = false
+margin_left = -128.0
+margin_top = -72.0
+margin_right = -64.0
+margin_bottom = -52.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 9 )
+text = "SCORE:900000000
+TIME: 00:00"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="RichTextLabel" parent="CanvasLayer/Control"]
+margin_left = -128.0
+margin_top = -16.0
+margin_right = 128.0
+margin_bottom = 16.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 9 )
+bbcode_enabled = true
+bbcode_text = "[center]- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+MISSION START
+----------------------------------------------------------------"
+text = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+MISSION START
+----------------------------------------------------------------"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="LevelObjects" type="Node2D" parent="."]
-script = ExtResource( 7 )
-
-[node name="PlayerShip" parent="LevelObjects" instance=ExtResource( 1 )]
-position = Vector2( 128, 72 )
-
-[node name="Dummy" parent="LevelObjects" instance=ExtResource( 2 )]
-position = Vector2( 230, 70 )
 
 [node name="LevelTimer" type="Timer" parent="LevelObjects"]
 
-[node name="Asteroid" parent="LevelObjects" instance=ExtResource( 5 )]
-position = Vector2( 182, 78 )
+[node name="Node2D" parent="LevelObjects" instance=ExtResource( 2 )]
 
-[node name="LevelManaging" type="Node2D" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="LevelManaging"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="LevelObjects"]
 script = SubResource( 3 )
 scroll_speed = -4.0
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="LevelManaging/ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="LevelObjects/ParallaxBackground"]
 motion_scale = Vector2( 0.2, 0.5 )
 motion_mirroring = Vector2( 256, 144 )
 
-[node name="Sprite" type="Sprite" parent="LevelManaging/ParallaxBackground/ParallaxLayer"]
+[node name="Sprite" type="Sprite" parent="LevelObjects/ParallaxBackground/ParallaxLayer"]
 position = Vector2( 128, 72 )
 texture = ExtResource( 4 )
+
+[node name="LevelManaging" type="Node2D" parent="."]
 
 [node name="TempStars" type="CPUParticles2D" parent="LevelManaging"]
 position = Vector2( 267, 66 )
 amount = 20
 lifetime = 3.0
 preprocess = 10.0
+speed_scale = 0.5
 texture = SubResource( 2 )
 emission_shape = 2
 emission_rect_extents = Vector2( 1, 100 )
@@ -118,6 +161,6 @@ polygon = PoolVector2Array( 0, 0, 260, 0, 260, 144, 0, 144 )
 [node name="MasterScript" type="Node2D" parent="."]
 script = ExtResource( 8 )
 
-[connection signal="RestartScene" from="LevelObjects/PlayerShip" to="." method="_on_PlayerShip_RestartScene"]
-[connection signal="ShipPosition" from="LevelObjects/PlayerShip" to="LevelManaging/ParallaxBackground" method="_on_ShipPosition"]
+[node name="Timer" type="Timer" parent="MasterScript"]
+
 [connection signal="area_entered" from="LevelManaging/Area2D" to="LevelManaging/Area2D" method="_on_Area2D_area_entered"]

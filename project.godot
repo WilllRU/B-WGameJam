@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
+"base": "Hazard",
 "class": "Asteroid",
 "language": "GDScript",
 "path": "res://asteroid.gd"
@@ -19,10 +19,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Bullets/bullet.gd"
 }, {
-"base": "Area2D",
+"base": "Hazard",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Scripts/Enemies/enemy.gd"
+}, {
+"base": "Area2D",
+"class": "Hazard",
+"language": "GDScript",
+"path": "res://Scripts/Enemies/hazard.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Ship",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "Asteroid": "",
 "Bullet": "",
 "Enemy": "",
+"Hazard": "",
 "Ship": ""
 }
 

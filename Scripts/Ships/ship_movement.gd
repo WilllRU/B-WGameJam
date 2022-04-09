@@ -6,7 +6,12 @@ signal ShipPosition (pos)
 # Recording for the Ghost
 var old : Array 
 
+var ch_wait : float
+
 func _init():
+	#accel = 5
+	#max_speed = 90
+	#damping = 1.5
 	accel = 5
 	max_speed = 90
 	damping = 1.5
@@ -19,11 +24,11 @@ func _ready():
 
 func setup_ghost() -> void:
 	var file_check = File.new()
-	for n in max_ghost:
-		if file_check.file_exists("user://" + "ghost_" + String(n) + ".json"):
-			var load_ghost = Master.ghost.instance()
-			load_ghost.global_position = global_position
-			get_parent().call_deferred("add_child",load_ghost)
+#	for n in max_ghost:
+	if file_check.file_exists("user://" + "ghost_" + String(0) + ".json"):
+		var load_ghost = Master.ghost.instance()
+		load_ghost.global_position = global_position
+		get_parent().call_deferred("add_child",load_ghost)
 	pass
 
 
@@ -38,11 +43,18 @@ func record_ghost() -> void:
 		return
 
 func movement_manager() -> void:
-	p_dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down",-1)
-	if Input.is_action_pressed("game_fire") and not firing:
-		fired = true
-		pass
-	
+	p_dir = Input.get_vector(
+		"ui_left",
+		"ui_right",
+		"ui_up",
+		"ui_down",
+		-1)
+	if not firing:
+		fired = Input.is_action_pressed("game_fire")
+#		if not fired:
+#			charge_shot()
+#		ch_wait += d
+#		ch_wait *= float(fired)
 	cur_speed += p_dir * accel 
 	cur_speed = Vector2(
 		clamp(cur_speed.x, -max_speed, max_speed),
@@ -71,6 +83,7 @@ func _physics_process(_delta):
 	if fired:
 		fired = false
 		can_shoot()
+
 	if dead and not is_dying:
 		is_dying = true
 		has_died()
@@ -87,5 +100,5 @@ func has_died() -> void:
 	prints("Saving to", f.get_path_absolute())
 	f.store_string(JSON.print(ghost_play))
 	f.close()
-	emit_signal("RestartScene")
 	create_explosion()
+	emit_signal("RestartScene")

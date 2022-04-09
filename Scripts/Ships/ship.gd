@@ -14,10 +14,11 @@ var bomb : bool = false
 var is_dying : bool = false
 var dead : bool = false
 
-var cur_bullet : int = 1
+var cur_bullet : int = 0
+const max_bullet : int = 5
+var f_r = 0.5
+const m_f_r = 0.1
 
-var cur_ghost : int = 0
-const max_ghost : int = 3
 
 # Recording for the Ghost
 var frame : int = 0
@@ -31,8 +32,12 @@ func can_shoot() -> void:
 		return
 	#print("FIRE!")
 	firing = true
-	var l_b = Master.bullet[cur_bullet].instance()
+	var l_b = Master.bullet[1].instance()
 	l_b.global_position = global_position + Vector2(15,0)
+	if cur_bullet < max_bullet:
+		l_b.proj = cur_bullet + 1
+	if f_r > m_f_r:
+		l_b.fire_rate = f_r
 	get_parent().call_deferred("add_child",l_b)
 	$Timer.start(l_b.fire_rate); yield($Timer, "timeout")
 	firing = false
@@ -51,7 +56,7 @@ func true_speed() -> Vector2:
 	
 func create_explosion() -> void:
 	for n in 4:
-		var e = Master.explosion.instance()
+		var e = Master.big_explosion.instance()
 		e.global_position = global_position
 		e.scale += Vector2(n, n)
 		get_parent().call_deferred("add_child",e)

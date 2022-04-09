@@ -1,10 +1,9 @@
 extends Bullet
 
-
 func _init():
-	dmg = 2
-	fire_rate = 0.3
-	speed = 3
+	dmg = 6
+	fire_rate = 0.8
+	speed = 2
 	pass
 
 func _on_bullet_body_entered(_body) -> void:

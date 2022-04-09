@@ -1,17 +1,21 @@
 extends Bullet
 
 var bullet_type: int = 3
-var proj : int = 3
+var proj : int = 2
 var spread = proj * 10
 
 func _init():
-	fire_rate = 0.4
+	fire_rate = 0.5
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
-	var ab : float = spread/(proj - 1)
-	# The +1 is there to keep the middle bullet going straight
-	var angle : float = -(spread/2) + 1
+	var ab : float = 0
+	var angle : float = 0
+	if proj > 1:
+		ab = spread/(proj - 1)
+		# The +1 is there to keep the middle bullet going straight
+		angle = -(spread/2) + 1
+
 	for n in proj:
 		var l_b = Master.spread.instance()
 		var dir = Vector2(cos(angle * PI / 180), sin(angle *PI / 180)).normalized()

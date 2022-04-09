@@ -11,10 +11,29 @@ extends Node2D
 # [4] Distance between multiple instances
 #
 onready var timeline : Dictionary = {
-	0 : [1.0, Master.hazard[1], 2, 24, 64],
-	1 : [4.0, Master.hazard[1], 1, 64, 0],
-	2 : [4.0, Master.hazard[1], 2, 64, 64],
-	3 : [4.0, Master.hazard[1], 2, 24, 64]
+	
+	0 : [2.0, Master.hazard[0], 1, 128, 0],
+	1 : [4.0, Master.hazard[0], 1, 112, 0],
+	2 : [2.0, Master.hazard[0], 1, 16, 0],
+	3 : [4.0, Master.hazard[0], 1, 80, 0],
+	4 : [2.0, Master.hazard[0], 1, 128, 0],
+	5 : [4.0, Master.hazard[0], 1, 32, 0],
+	6 : [4.0, Master.hazard[0], 1, 80, 0],
+	7 : [2.0, Master.hazard[0], 1, 16, 0],
+	8 : [4.0, Master.hazard[1], 1, 32, 0],
+	9 : [2.0, Master.hazard[0], 1, 112, 0],
+	10 : [4.0, Master.hazard[0], 1, 32, 0],
+	11 : [2.0, Master.hazard[1], 1, 128, 0],
+	12 : [6.0, Master.hazard[0], 1, 72, 0],
+	13 : [2.0, Master.hazard[1], 2, 16, 112],
+	14 : [4.0, Master.hazard[0], 1, 64, 0],
+	15 : [2.0, Master.hazard[1], 1, 96, 0],
+	16 : [2.0, Master.hazard[0], 1, 32, 0],
+	17 : [0.0, Master.hazard[1], 1, 128, 0],
+	18 : [2.0, Master.hazard[1], 2, 48, 48],
+	19 : [2.0, Master.hazard[0], 1, 16, 0],
+	20 : [0.0, Master.hazard[1], 1, 80, 0]
+	
 #	0 : [2.0,prefab[0],3,8,40],
 #	1 : [2.0,null,3,24,40],
 #	2 : [2.0,prefab[0],3,8,40]

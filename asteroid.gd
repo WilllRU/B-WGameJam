@@ -1,21 +1,22 @@
 class_name Asteroid
-extends Area2D
-var health : int
-var accel : float = .5
-var c_dir = Vector2(-1.0,0.0)
+extends Hazard
 var split : int = 2
 var rot : Array = [-90,0,90,180]
 var dir : Array = [170,180,-170]
 var data : Array = [Rect2(36,20,8,8),Rect2(32,0,16,16),Rect2(0,0,32,32)]
 
+func _init():
+	accel = 1
+	c_dir = Vector2(-1.0,0.0)
 func _ready():
+	health = 2 * (split + 1)
 	$Sprite.region_rect = data[split]
 	var circ = CircleShape2D.new()
-	circ.radius = int(16 / (3 - split))
+	circ.radius = floor(16 / (3 - split))
 
 	$CollisionShape2D.shape = circ
 	rotation_degrees = rot[randi() % rot.size()]
-	health = 2 * (split + 1)
+	
 
 func take_damage(hp : int) -> void:
 	health -= hp
