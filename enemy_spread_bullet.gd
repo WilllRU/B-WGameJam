@@ -4,8 +4,6 @@ var bullet_type: int = 3
 var proj : int = 2
 var spread = proj * 10
 
-func _init():
-	fire_rate = 0.5
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,8 +15,8 @@ func _ready():
 		angle = -(spread/2) + 1
 
 	for n in proj:
-		var l_b = Master.spread[0].instance()
-		var dir = Vector2(cos(angle * PI / 180), sin(angle *PI / 180)).normalized()
+		var l_b = Master.spread[1].instance()
+		var dir = Vector2(cos((angle+180) * PI / 180), sin((angle+180) *PI / 180)).normalized()
 		l_b.global_position = self.global_position + dir
 		l_b.vec_dir = dir
 		get_parent().call_deferred("add_child",l_b)

@@ -50,6 +50,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, 0.5 )
 frames = SubResource( 12 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -63,6 +64,8 @@ autoplay = true
 max_distance = 300.0
 bus = "SFX"
 script = SubResource( 9 )
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="." to="." method="_on_bullet_body_entered"]
 [connection signal="body_entered" from="." to="." method="_on_bullet_area_entered"]

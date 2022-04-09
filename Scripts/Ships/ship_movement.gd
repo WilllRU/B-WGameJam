@@ -25,7 +25,7 @@ func _ready():
 func setup_ghost() -> void:
 	var file_check = File.new()
 #	for n in max_ghost:
-	if file_check.file_exists("user://" + "ghost_" + String(0) + ".json"):
+	if file_check.file_exists("user://" + "ghost_" + String(Master.level) + ".json"):
 		var load_ghost = Master.ghost.instance()
 		load_ghost.global_position = global_position
 		get_parent().call_deferred("add_child",load_ghost)
@@ -94,7 +94,7 @@ func _process(_delta):
 func has_died() -> void:
 	
 	var f := File.new()
-	var check = f.open("user://" + "ghost_0.json", File.WRITE)
+	var check = f.open("user://" + "ghost_" + String(Master.level) + ".json", File.WRITE)
 	if check != OK:
 		printerr("FAILED TO SAVE GHOST")
 	prints("Saving to", f.get_path_absolute())

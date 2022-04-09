@@ -14,7 +14,7 @@ func _ready():
 
 func load_file():
 	var f := File.new()
-	var check = f.open("user://" + "ghost_0.json", File.READ)
+	var check = f.open("user://" + "ghost_" + String(Master.level) + ".json", File.READ)
 	if check != OK:
 		printerr("The file is unsalvagable...WHAT DID YOU DO!!!!")
 		pass

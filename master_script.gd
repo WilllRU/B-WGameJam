@@ -10,9 +10,14 @@ var ship = preload("res://Prefabs/Ships/PlayerShip.tscn")
 onready var bullet : Array = [
 	preload("res://BulletTypes/NormalBullet.tscn"),
 	preload("res://BulletTypes/TripleBullet.tscn"),
-	preload("res://BulletTypes/ChargeShot.tscn")
+	preload("res://BulletTypes/ChargeShot.tscn"),
+	preload("res://BulletTypes/EnemySpreadBullet.tscn")
 	]
-onready var spread = preload("res://BulletTypes/SpreadBullet.tscn")
+onready var spread = [
+	preload("res://BulletTypes/SpreadBullet.tscn"),
+	preload("res://BulletTypes/EnemyBullet.tscn")
+	]
+
 var ghost = preload("res://Prefabs/Ships/GhostShip.tscn")
 
 onready var hazard : Array = [
@@ -21,3 +26,4 @@ onready var hazard : Array = [
 ]
 
 var loop : int = 0
+var level : int = 0

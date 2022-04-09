@@ -1,6 +1,5 @@
 extends Bullet
 
-
 func _init():
 	dmg = 2
 	fire_rate = 0.2
