@@ -2,6 +2,7 @@ extends Ship
 
 signal RestartScene
 signal ShipPosition (pos)
+signal LevelComplete
 
 # Recording for the Ghost
 var old : Array 
@@ -47,8 +48,7 @@ func movement_manager() -> void:
 		"ui_left",
 		"ui_right",
 		"ui_up",
-		"ui_down",
-		-1)
+		"ui_down")
 	if not firing:
 		fired = Input.is_action_pressed("game_fire")
 #		if not fired:
@@ -90,6 +90,9 @@ func _physics_process(_delta):
 
 func _process(_delta):
 	emit_signal("ShipPosition", global_position)
+
+func level_complete():
+	emit_signal("LevelComplete")
 
 func has_died() -> void:
 	

@@ -1,20 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://SpawnShip.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Ships/portal.gd" type="Script" id=1]
 [ext_resource path="res://Prefabs/ShipsShockwave.tres" type="Animation" id=2]
-
-[sub_resource type="Curve" id=1]
-min_value = -20.0
-max_value = 0.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, -20 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Curve" id=2]
-max_value = 100.0
-_data = [ Vector2( 0.681373, 2.95454 ), 0.0, 0.0, 0, 0, Vector2( 0.995098, 72.0455 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Curve" id=3]
-max_value = 2.0
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 2 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
@@ -35,13 +22,55 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = SubResource( 4 )
-shader_param/center = Vector2( 0, 0 )
+shader_param/center = Vector2( 0.5, 0.5 )
 shader_param/force = 0.1
 shader_param/size = 0.0
 shader_param/thickness = 0.1
 
+[sub_resource type="Animation" id=7]
+resource_name = "Portal"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.3, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/force")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/thickness")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.1, 0.0 ]
+}
+
 [sub_resource type="Animation" id=6]
 length = 0.001
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/size")
 tracks/0/interp = 1
@@ -103,22 +132,28 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[node name="ChargeParticles" type="CPUParticles2D"]
-position = Vector2( 128, 72 )
-amount = 16
-lifetime = 3.0
-speed_scale = 2.0
-emission_shape = 1
-emission_sphere_radius = 16.0
-spread = 90.0
-gravity = Vector2( 0, 0 )
-radial_accel_curve = SubResource( 1 )
-damping_curve = SubResource( 2 )
-scale_amount_curve = SubResource( 3 )
+[sub_resource type="Curve" id=1]
+min_value = -20.0
+max_value = 0.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, -20 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=2]
+max_value = 100.0
+_data = [ Vector2( 0.681373, 2.95454 ), 0.0, 0.0, 0, 0, Vector2( 1, 14.0909 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+max_value = 2.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 2 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 16.0
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enable = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource( 5 )
@@ -130,8 +165,27 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 root_node = NodePath("../ColorRect")
-autoplay = "Shockwave"
+autoplay = "Portal"
+anims/Portal = SubResource( 7 )
 anims/RESET = SubResource( 6 )
 anims/Shockwave = ExtResource( 2 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ChargeParticles" type="CPUParticles2D" parent="."]
+amount = 16
+lifetime = 3.0
+speed_scale = 2.0
+emission_shape = 1
+emission_sphere_radius = 32.0
+spread = 90.0
+gravity = Vector2( 0, 0 )
+radial_accel_curve = SubResource( 1 )
+damping_curve = SubResource( 2 )
+scale_amount_curve = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="ChargeParticles"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 8 )
+
+[connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/mini_boss.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Enemies/mini_boss_ball.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/WeirdBallSheet.png" type="Texture" id=2]
+[ext_resource path="res://boss_health.gd" type="Script" id=3]
+[ext_resource path="res://new_theme.tres" type="Theme" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0312
@@ -23,10 +25,13 @@ animations = [ {
 } ]
 
 [node name="MiniBoss" type="Area2D"]
-position = Vector2( 72, 72 )
+position = Vector2( 128, 72 )
 collision_layer = 25
 collision_mask = 25
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -36,6 +41,30 @@ frames = SubResource( 4 )
 frame = 1
 playing = true
 
+[node name="RoundTimer" type="Timer" parent="."]
+
 [node name="Timer" type="Timer" parent="."]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+margin_left = 64.0
+margin_top = 141.0
+margin_right = 192.0
+margin_bottom = 155.912
+size_flags_stretch_ratio = 0.0
+theme = ExtResource( 4 )
+step = 1.0
+rounded = true
+percent_visible = false
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthTimer" type="Timer" parent="CanvasLayer/ProgressBar"]
+
+[connection signal="BossAwake" from="." to="CanvasLayer/ProgressBar" method="_on_MiniBoss_BossAwake"]
+[connection signal="BossHealth" from="." to="CanvasLayer/ProgressBar" method="_on_MiniBoss_BossHealth"]
 [connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]

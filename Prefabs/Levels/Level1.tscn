@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Prefabs/Enemies/Asteroid.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Asteroid7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 390, 106 )
+
+[node name="Asteroid8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 462, 19 )
+
+[node name="Asteroid10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 561, 52 )
+
+[node name="Asteroid11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 671, 128 )
+
+[node name="Asteroid12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 673, 24 )
+
+[node name="Asteroid13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 790, 80 )
+
+[node name="Asteroid14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 922, 129 )
+
+[node name="Asteroid15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 888, 36 )
+
+[node name="Asteroid16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1016, 70 )
+
+[node name="Asteroid18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1162, 36 )
+
+[node name="Asteroid22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1375, 125 )
+
+[node name="Asteroid23" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1343, 14 )
+
+[node name="Asteroid24" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1408, 35 )
+
+[node name="Asteroid25" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1449, 100 )
+
+[node name="Asteroid26" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1529, 124 )
+
+[node name="Asteroid27" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1500, 8 )
+
+[node name="Asteroid28" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1476, 52 )
+
+[node name="Asteroid" parent="." instance=ExtResource( 1 )]
+position = Vector2( 282, 125 )
+
+[node name="Asteroid2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1578, 36 )
+
+[node name="Asteroid3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1670, 103 )
+
+[node name="Asteroid4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1789, 61 )
+
+[node name="Asteroid5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2077, 116 )

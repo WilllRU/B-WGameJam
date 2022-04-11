@@ -1,6 +1,7 @@
 extends Ship
 
 var load_data : Dictionary = Dictionary()
+var data_size : int = 0
 
 var cur : Array
 
@@ -11,6 +12,7 @@ func _init():
 
 func _ready():
 	load_data = load_file()
+	data_size = load_data.size()
 
 func load_file():
 	var f := File.new()
@@ -45,6 +47,9 @@ func _physics_process(_delta):
 	
 func get_recording():
 	count += 1
+#	if count > data_size:
+#		dead = true
+#		return
 	var test = load_data.get(String(count))
 	if test != null:
 		cur = test

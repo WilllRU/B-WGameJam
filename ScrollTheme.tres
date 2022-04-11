@@ -1,0 +1,71 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[sub_resource type="StyleBoxTexture" id=15]
+region_rect = Rect2( 0, 0, 7, 9 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 5.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=13]
+region_rect = Rect2( 0, 0, 7, 9 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=17]
+region_rect = Rect2( 0, 0, 7, 9 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 5.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id=18]
+region_rect = Rect2( 0, 0, 7, 9 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 5.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=16]
+region_rect = Rect2( 0, 0, 7, 9 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 5.0
+margin_bottom = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=14]
+region_rect = Rect2( 0, 0, 7, 9 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 5.0
+
+[resource]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/styles/disabled = SubResource( 15 )
+Button/styles/hover = SubResource( 13 )
+Button/styles/normal = SubResource( 13 )
+Button/styles/pressed = SubResource( 15 )
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 17 )
+HSlider/styles/grabber_area_highlight = SubResource( 17 )
+HSlider/styles/slider = SubResource( 17 )
+RichTextLabel/constants/line_separation = 3
+VScrollBar/styles/grabber = SubResource( 18 )
+VScrollBar/styles/grabber_highlight = SubResource( 18 )
+VScrollBar/styles/grabber_pressed = SubResource( 16 )
+VScrollBar/styles/scroll = SubResource( 14 )
+VScrollBar/styles/scroll_focus = SubResource( 14 )

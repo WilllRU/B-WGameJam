@@ -3,7 +3,7 @@ extends Bullet
 func _init():
 	dmg = 2
 	fire_rate = 0.2
-	speed = .5
+	speed = .8
 	vec_dir = Vector2(-1,0)
 	pass
 

@@ -17,7 +17,7 @@ var dead : bool = false
 var cur_bullet : int = 0
 const max_bullet : int = 5
 var f_r = 0.5
-const m_f_r = 0.1
+const m_f_r = 0.2
 
 
 # Recording for the Ghost

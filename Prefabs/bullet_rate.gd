@@ -11,7 +11,7 @@ func _on_bullet_body_entered(_body) -> void:
 	if player:
 		#enemy.dead = true
 		print("Faster Bullet")
-		player.f_r -= 0.1
+		player.f_r -= 0.05
 		queue_free()
 	
 	pass # Replace with function body.
@@ -20,8 +20,8 @@ func _on_bullet_area_entered(_area) -> void:
 	var player := _area as Ship
 	if player:
 		#enemy.dead = true
-		print("Bonus Bullet")
-		player.f_r -= 0.1
+		print("Faster Bullet")
+		player.f_r -= 0.05
 		queue_free()
 	
 	pass
