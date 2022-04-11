@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WeirdBall?.png-63948b3fe2bc30c59c09ea7b17c8b6ba.stex"
+path="res://.import/WeirdBall.png-025d10edcf19a7af59249ea789c9cf85.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/WeirdBall?.png"
-dest_files=[ "res://.import/WeirdBall?.png-63948b3fe2bc30c59c09ea7b17c8b6ba.stex" ]
+source_file="res://Sprites/WeirdBall.png"
+dest_files=[ "res://.import/WeirdBall.png-025d10edcf19a7af59249ea789c9cf85.stex" ]
 
 [params]
 
