@@ -6,11 +6,6 @@ var move_path : Dictionary = { 0 : [Vector2(-1,0),0.0,false]}
 var count : int = 0
 var cur : Array = [Vector2(0,0),0.0,false]
 
-func take_damage(hp : int) -> void:
-	health -= hp
-	if health <= 0:
-		explode()
-	pass
 
 func explode() -> void:
 	set_deferred("monitoring", false)

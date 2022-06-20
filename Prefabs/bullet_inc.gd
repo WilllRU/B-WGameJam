@@ -12,6 +12,7 @@ func _on_bullet_body_entered(_body) -> void:
 	if player:
 		#enemy.dead = true
 		print("Bonus Bullet")
+		player.f_r = 0.4
 		player.cur_bullet += 1
 		queue_free()
 	
@@ -22,6 +23,7 @@ func _on_bullet_area_entered(_area) -> void:
 	if player:
 		#enemy.dead = true
 		print("Bonus Bullet")
+		player.f_r = 0.4
 		player.cur_bullet += 1
 		queue_free()
 	

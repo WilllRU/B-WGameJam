@@ -24,15 +24,20 @@ onready var spread = [
 	preload("res://BulletTypes/EnemyBullet.tscn")
 	]
 
+onready var complete = preload("res://Prefabs/LevelComplete.tscn")
+
 onready var lvls = [
-	preload("res://Prefabs/Levels/Level1.tscn")
+	preload("res://Prefabs/Levels/Level1.tscn"),
+	preload("res://Prefabs/Levels/Level1.tscn"),
+	preload("res://Prefabs/Levels/Level3.tscn")
 	]
 
 onready var ghost = preload("res://Prefabs/Ships/GhostShip.tscn")
 
 onready var hazard : Array = [
 	preload("res://Prefabs/Enemies/Asteroid.tscn"),
-	preload("res://Prefabs/Enemies/Drone.tscn")
+	preload("res://Prefabs/Enemies/Drone.tscn"),
+	preload("res://Prefabs/Enemies/DynaBall.tscn")
 ]
 
 var loop : int = 0

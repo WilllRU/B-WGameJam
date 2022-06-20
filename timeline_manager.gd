@@ -8,27 +8,50 @@ extends Node2D
 # [4] Distance between multiple instances
 
 onready var level = [{
-	0 : [0.0, Master.hazard[1], 1, Vector2(288,112), 0],
+	0 : [4.0, Master.hazard[1], 1, Vector2(288,112), 0],
 	1 : [6.0, Master.hazard[1], 1, Vector2(288,32), 0],
 	2 : [6.0, Master.hazard[1], 1, Vector2(288,72), 0],
-	3 : [8.0, Master.hazard[1], 2, Vector2(288,32), 48],
+	3 : [4.0, Master.hazard[1], 2, Vector2(288,32), 48],
 	4 : [6.0, Master.hazard[1], 1, Vector2(288,80), 0],
+	5 : [3.0, Master.hazard[1], 2, Vector2(288,32), 64],
+	6 : [3.0, Master.hazard[1], 1, Vector2(288,80), 0],
+	7 : [6.0, Master.hazard[1], 2, Vector2(288,48), 64],
+	8 : [4.0, Master.hazard[1], 2, Vector2(288,32), 64],
+	9 : [6.0, Master.hazard[1], 2, Vector2(288,48), 64],
+	10 : [6.0, Master.hazard[1], 2, Vector2(288,16), 64],
+	11 : [6.0, Master.complete, 1, Vector2(288,72), 48]
+},
+{
+	0 : [8.0, Master.hazard[1], 2, Vector2(288,56), 48],
+	1 : [6.0, Master.hazard[1], 1, Vector2(288,32), 0],
+	2 : [6.0, Master.hazard[2], 1, Vector2(288,72), 0],
+	3 : [8.0, Master.hazard[1], 2, Vector2(288,32), 48],
+	4 : [6.0, Master.hazard[2], 1, Vector2(288,80), 0],
 	5 : [4.0, Master.hazard[1], 1, Vector2(288,112), 0],
 	6 : [6.0, Master.hazard[1], 1, Vector2(288,32), 0],
 	7 : [6.0, Master.hazard[1], 1, Vector2(288,72), 0],
-	8 : [6.0, Master.hazard[1], 2, Vector2(288,32), 64],
+	8 : [6.0, Master.hazard[2], 2, Vector2(288,32), 64],
 	9 : [4.0, Master.hazard[1], 1, Vector2(288,80), 0],
-	10 : [6.0, Master.hazard[1], 2, Vector2(288,48), 64],
+	10 : [6.0, Master.hazard[2], 2, Vector2(288,48), 64],
 	11 : [4.0, Master.hazard[1], 2, Vector2(288,32), 64],
-	12 : [4.0, Master.hazard[1], 2, Vector2(288,16), 64],
-	13 : [4.0, Master.hazard[1], 3, Vector2(288,32), 48],
-	14 : [4.0, Master.hazard[1], 3, Vector2(288,16), 48],
-	15 : [10.0, Master.par, 1, Vector2(192,72), 48]
+	12 : [4.0, Master.hazard[2], 2, Vector2(288,16), 72],
+	13 : [1.0, Master.hazard[1], 2, Vector2(288,32), 48],
+	14 : [4.0, Master.hazard[1], 2, Vector2(288,16), 48],
+	15 : [15.0, Master.complete, 1, Vector2(288,72), 48]
 },
 {
-	0:[6.0, Master.par, 1, Vector2(192,72), 48]
-	
-}]
+	0 : [8.0, Master.hazard[2], 2, Vector2(288,56), 48],
+	1 : [6.0, Master.hazard[1], 1, Vector2(288,32), 0],
+	2 : [6.0, Master.hazard[2], 1, Vector2(288,72), 0],
+	3 : [8.0, Master.hazard[1], 2, Vector2(288,32), 64],
+	4 : [6.0, Master.hazard[2], 1, Vector2(288,80), 0],
+	5 : [4.0, Master.hazard[1], 1, Vector2(288,112), 0],
+	6 : [6.0, Master.hazard[1], 1, Vector2(288,32), 0],
+	7 : [6.0, Master.hazard[1], 1, Vector2(288,72), 0],
+	8 : [6.0, Master.hazard[2], 2, Vector2(288,32), 64],
+	9 : [15.0, Master.par, 1, Vector2(192,72), 0],
+}
+	]
 
 
 var timeline : Dictionary
@@ -45,6 +68,7 @@ func _ready():
 	pass # Replace with function body.
 
 func start_level():
+	print("level: ", Master.level)
 	timeline = level[Master.level]
 	var lv = Master.lvls[Master.level].instance()
 	lv.global_position = self.global_position
@@ -52,6 +76,7 @@ func start_level():
 	play_timeline()
 
 func play_timeline() -> void:
+	print("count: ", count)
 	cur = timeline.get(count)
 	$LevelTimer.start(cur[0]); yield($LevelTimer, "timeout")
 	count += 1
@@ -62,4 +87,6 @@ func play_timeline() -> void:
 			get_parent().call_deferred("add_child",e)
 	if count < timeline.size():
 		play_timeline()
+	else:
+		count = 0
 	pass

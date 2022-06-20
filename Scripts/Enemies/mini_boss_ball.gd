@@ -17,12 +17,15 @@ var move_boss = [{
 		2 : [Vector2(-1,0),2.0,false],
 		3 : [Vector2(1,0),2.0,true],
 		4 : [Vector2(-1,1),2.0,false],
-		5 : [Vector2(1,-1),1.0,true]
+		5 : [Vector2(1,-1),2.0,true]
 	}
 	]
 
+var max_health = 75
+var started_phase = false
+
 func _init():
-	health = 50
+	health = max_health
 	accel = 4
 
 
@@ -41,6 +44,9 @@ func set_move() -> void:
 	count += 1
 	if count >= move_boss[int(phase)].size():
 		count = 0
+	if phase and not started_phase:
+		started_phase = true
+		phase_two()
 	set_move()
 	pass
 
@@ -56,18 +62,29 @@ func can_fire() -> void:
 func take_damage(hp : int) -> void:
 	health -= hp
 	emit_signal("BossHealth", health)
-	if health < health/2 and not phase:
-
+	if health < max_health/2 and not phase:
 		phase = true
+		set_deferred("monitoring", false)
+		set_deferred("monitorable", false)
 	if health <= 0:
+		var c = Master.complete.instance()
+		c.global_position = Vector2(288,72)
+		get_parent().call_deferred("add_child",c)
 		explode()
+	$Sprite.material.set_shader_param("hit_opacity", 1)
+	$FlashTime.start(0.2); yield($FlashTime, "timeout")
+	$Sprite.material.set_shader_param("hit_opacity", 0)
 	pass
 
 func phase_two():
-		global_position = Vector2(192,72)
-		accel += 1
-		rounds = 4
-		bullets = 4
+	set_deferred("monitoring", true)
+	set_deferred("monitorable", true)
+	cur[0] = Vector2(0,0)
+	global_position = Vector2(192,72)
+	accel += 1
+	rounds = 4
+	bullets = 4
+	
 
 func _on_Enemy_body_entered(body):
 	var player := body as Ship

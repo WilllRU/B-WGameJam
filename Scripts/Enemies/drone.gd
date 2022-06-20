@@ -1,8 +1,8 @@
 extends Enemy
 
 func _init():
-	health = 6
-	accel = 2.8
+	health = 4
+	accel = 2.8 * 2
 	
 	move_path = {
 		0 : [Vector2(-1,1),1.0,false],

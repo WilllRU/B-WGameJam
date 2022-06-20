@@ -6,7 +6,7 @@ var dir : Array = [170,180,-170]
 var data : Array = [Rect2(36,20,8,8),Rect2(32,0,16,16),Rect2(0,0,32,32)]
 
 func _init():
-	accel = 1
+	accel = 1 *2
 	c_dir = Vector2(-1.0,0.0)
 func _ready():
 	health = 2 * (split + 1)
@@ -17,12 +17,6 @@ func _ready():
 	$CollisionShape2D.shape = circ
 	rotation_degrees = rot[randi() % rot.size()]
 	
-
-func take_damage(hp : int) -> void:
-	health -= hp
-	if health <= 0:
-		explode()
-	pass
 
 func _physics_process(_delta):
 	# Writing it like this makes it work for some reason???

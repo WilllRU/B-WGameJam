@@ -16,7 +16,7 @@ var dead : bool = false
 
 var cur_bullet : int = 0
 const max_bullet : int = 5
-var f_r = 0.5
+var f_r = 0.4
 const m_f_r = 0.2
 
 
@@ -55,6 +55,8 @@ func true_speed() -> Vector2:
 	return cur_speed
 	
 func create_explosion() -> void:
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	for n in 4:
 		var e = Master.big_explosion.instance()
 		e.global_position = global_position

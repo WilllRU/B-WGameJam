@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UIButton.png" type="Texture" id=2]
+[ext_resource path="res://UIButtonPressed.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 7, 7 )
+margin_left = 2.18471
+margin_right = 2.0562
+margin_top = 2.31322
+margin_bottom = 2.0562
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 5, 5 )
+margin_left = 2.18471
+margin_right = 2.0562
+margin_top = 2.31322
+margin_bottom = 2.0562
+
+[resource]
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 20 )
+Button/styles/hover = SubResource( 18 )
+Button/styles/normal = SubResource( 18 )
+Button/styles/pressed = SubResource( 20 )

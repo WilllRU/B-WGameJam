@@ -1,4 +1,5 @@
 extends Ship
+class_name Player
 
 signal RestartScene
 signal ShipPosition (pos)

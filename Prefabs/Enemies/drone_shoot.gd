@@ -3,7 +3,7 @@ extends Enemy
 var rounds : int = 3
 
 func _init():
-	health = 3
+	health = 4
 	accel = 4
 	
 	move_path = {
